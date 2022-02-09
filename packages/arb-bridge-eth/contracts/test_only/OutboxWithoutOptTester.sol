@@ -20,15 +20,11 @@ pragma solidity ^0.6.11;
 
 import "../bridge/interfaces/IOutbox.sol";
 import "../bridge/interfaces/IBridge.sol";
-// import "./Copy_Address2.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
 import "../bridge/Messages.sol";
 import "../bridge/libraries/MerkleLib.sol";
 import "../bridge/libraries/BytesLib.sol";
 import "../bridge/libraries/Cloneable.sol";
-
-// import "@openzeppelin/contracts/proxy/BeaconProxy.sol";
-// import "@openzeppelin/contracts/proxy/UpgradeableBeacon.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
 
 contract OutboxWithoutOptTester is IOutbox, Cloneable {
     using BytesLib for bytes;
