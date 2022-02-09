@@ -1,0 +1,118 @@
+{
+    "cases": [
+        {
+            "batchNum": 4862,
+            "root": "0x55baae5b414cf86a90609939a426232c5df0de0c680a936d94daff79ac1f74db",
+            "args": {
+                "batchNum": 4862,
+                "proof": ["0x7722e618f50e33ae0b952ad85924ad93d08997b983efb25ca85aaa1e514c6ba1",
+                    "0x09725ba48160f71131b8c118eed33a5e6356db0d1fadaad0ee7e459f405e8062",
+                    "0xb6cac1e7de21af2cf590a1869ef4a1f6a6edf185aa11f46e16e74ba83412aa18",
+                    "0x4bedf2714205c5b2a736969797ea99b284b1c58ef559c68075a9916ca154b63c"],
+                "index": 0,
+                "l2Sender": "0x9598876539A9011708a1Ca42F01DbE090Ea86e1a",
+                "destAddr": "0x9598876539A9011708a1Ca42F01DbE090Ea86e1a",
+                "l2Block": 3854827,
+                "l1Block": 13804269,
+                "l2Timestamp": 1639497905,
+                "amount": "100869339769428118",
+                "calldataForL1": "0x"
+            }
+        },
+        {
+            "batchNum": 4862,
+            "root": "0x55baae5b414cf86a90609939a426232c5df0de0c680a936d94daff79ac1f74db",
+            "args": {
+                "batchNum": 4862,
+                "proof": ["0x8a49f3620b344c9331de258ab01691ec5e178ec55e71dddab83bfae8353ce50d",
+                    "0x09725ba48160f71131b8c118eed33a5e6356db0d1fadaad0ee7e459f405e8062",
+                    "0xb6cac1e7de21af2cf590a1869ef4a1f6a6edf185aa11f46e16e74ba83412aa18",
+                    "0x4bedf2714205c5b2a736969797ea99b284b1c58ef559c68075a9916ca154b63c"],
+                "index": 1,
+                "l2Sender": "0x19fB54e76Ef3b78219f34525Db1dB9288EdFf11B",
+                "destAddr": "0x19fB54e76Ef3b78219f34525Db1dB9288EdFf11B",
+                "l2Block": 3854825,
+                "l1Block": 13804269,
+                "l2Timestamp": 1639497905,
+                "amount": "109342936476713971",
+                "calldataForL1": "0x"
+            }
+        },
+        {
+            "batchNum": 4862,
+            "root": "0x55baae5b414cf86a90609939a426232c5df0de0c680a936d94daff79ac1f74db",
+            "args": {
+                "batchNum": 4862,
+                "proof": ["0x8996f335e64814ed0887ac639f45c5c8cb6d4f2ae0e84e01e8bf3efce349b22e",
+                    "0x0c4ad24d077948fb66ec3da78934ddcc61455c9d90be59209e86a525d9146202",
+                    "0xb6cac1e7de21af2cf590a1869ef4a1f6a6edf185aa11f46e16e74ba83412aa18",
+                    "0x4bedf2714205c5b2a736969797ea99b284b1c58ef559c68075a9916ca154b63c"],
+                "index": 2,
+                "l2Sender": "0x757A6c6c00009160626C36102ad7b53b1CfEDC88",
+                "destAddr": "0x757A6c6c00009160626C36102ad7b53b1CfEDC88",
+                "l2Block": 3854824,
+                "l1Block": 13804269,
+                "l2Timestamp": 1639497905,
+                "amount": "106697578001413404",
+                "calldataForL1": "0x"
+            }
+        },
+        {
+            "batchNum": 4862,
+            "root": "0x55baae5b414cf86a90609939a426232c5df0de0c680a936d94daff79ac1f74db",
+            "args": {
+                "batchNum": 4862,
+                "proof": ["0x34a501d79549f8ba29d3e1e612de2229a14b47d3872722dd7bbf9fa22e477ec0",
+                    "0x0c4ad24d077948fb66ec3da78934ddcc61455c9d90be59209e86a525d9146202",
+                    "0xb6cac1e7de21af2cf590a1869ef4a1f6a6edf185aa11f46e16e74ba83412aa18",
+                    "0x4bedf2714205c5b2a736969797ea99b284b1c58ef559c68075a9916ca154b63c"],
+                "index": 3,
+                "l2Sender": "0xd810A4f343bdEE89701ce2F34F0C8419b7aBbA70",
+                "destAddr": "0xd810A4f343bdEE89701ce2F34F0C8419b7aBbA70",
+                "l2Block": 3854822,
+                "l1Block": 13804269,
+                "l2Timestamp": 1639497905,
+                "amount": "101298626085794843",
+                "calldataForL1": "0x"
+            }
+        },
+        {
+            "batchNum": 4861,
+            "root": "0x1eeebeb691864bb152d716a484ecdded811d42867bb2adb2d320d6090529cb1d",
+            "args": {
+                "batchNum": 4861,
+                "proof": ["0x1c413d9e2ef519274482a53ac04c05398bb4c3f5622b127081e120b3f6ecb007",
+                    "0xd9215d90bd56e246a68605bd29df23c1e5aa8fe502075fb33faf4b821cd1f3d4",
+                    "0x65d47a074c095d4ebe3da4cc3ee37403fb5f1bad72e5dad56d672d3825720859",
+                    "0x37a08def24e0a97e2a47ae9a615803f2bada96c3bbd209245007c027599fea50"],
+                "index": 0,
+                "l2Sender": "0x8Eb12c465FAb336E20BF0B40c5CD18C9F9F6698F",
+                "destAddr": "0x8Eb12c465FAb336E20BF0B40c5CD18C9F9F6698F",
+                "l2Block": 3854079,
+                "l1Block": 13804149,
+                "l2Timestamp": 1639496114,
+                "amount": "112655100992788749",
+                "calldataForL1": "0x"
+            }
+        },
+        {
+            "batchNum": 4861,
+            "root": "0x1eeebeb691864bb152d716a484ecdded811d42867bb2adb2d320d6090529cb1d",
+            "args": {
+                "batchNum": 4861,
+                "proof": ["0x9f9d497265a1c03f147c4c49c46c6f0180134ba732e9521ca3e561ada540bc0b",
+                    "0xd9215d90bd56e246a68605bd29df23c1e5aa8fe502075fb33faf4b821cd1f3d4",
+                    "0x65d47a074c095d4ebe3da4cc3ee37403fb5f1bad72e5dad56d672d3825720859",
+                    "0x37a08def24e0a97e2a47ae9a615803f2bada96c3bbd209245007c027599fea50"],
+                "index": 1,
+                "l2Sender": "0xdFe41CCfD96f271e3aF80b449B4037c75abc5b8A",
+                "destAddr": "0xdFe41CCfD96f271e3aF80b449B4037c75abc5b8A",
+                "l2Block": 3854075,
+                "l1Block": 13804149,
+                "l2Timestamp": 1639496114,
+                "amount": "105567631344387106",
+                "calldataForL1": "0x"
+            }
+        }
+    ]
+}
