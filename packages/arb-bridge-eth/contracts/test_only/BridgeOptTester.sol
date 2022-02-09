@@ -23,7 +23,7 @@ import "@openzeppelin/contracts/utils/Address.sol";
 import "./interfaces/IBridge.sol";
 import "./Messages.sol";
 
-contract Bridge is  IBridge {
+contract Bridge is IBridge {
     using Address for address;
     struct InOutInfo {
         uint256 index;
