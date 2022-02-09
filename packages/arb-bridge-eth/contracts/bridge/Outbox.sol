@@ -20,32 +20,24 @@ pragma solidity ^0.6.11;
 
 import "./interfaces/IOutbox.sol";
 import "./interfaces/IBridge.sol";
-// import "./Copy_Address2.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
+
 import "./Messages.sol";
-import "./libraries/MerkleLib.sol";
-import "./libraries/BytesLib.sol";
-import "./libraries/Cloneable.sol";
+import "../libraries/MerkleLib.sol";
+import "../libraries/BytesLib.sol";
+import "../libraries/Cloneable.sol";
 
-// import "@openzeppelin/contracts/proxy/BeaconProxy.sol";
-// import "@openzeppelin/contracts/proxy/UpgradeableBeacon.sol";
+import "@openzeppelin/contracts/proxy/BeaconProxy.sol";
+import "@openzeppelin/contracts/proxy/UpgradeableBeacon.sol";
 
-contract OutboxWithOpt is IOutbox, Cloneable {
+contract Outbox is IOutbox, Cloneable {
     using BytesLib for bytes;
-    using Address for address;
+
     struct OutboxEntry {
         // merkle root of outputs
         bytes32 root;
         // mapping from output id => is spent
         mapping(bytes32 => bool) spentOutput;
     }
-
-    event BridgeCallTriggered(
-        address indexed outbox,
-        address indexed destAddr,
-        uint256 amount,
-        bytes data
-    );
 
     bytes1 internal constant MSG_ROOT = 0;
 
@@ -55,7 +47,7 @@ contract OutboxWithOpt is IOutbox, Cloneable {
     IBridge public bridge;
 
     mapping(uint256 => OutboxEntry) public outboxEntries;
-    address public  activeOutbox;
+
     struct L2ToL1Context {
         uint128 l2Block;
         uint128 l1Block;
@@ -72,14 +64,14 @@ contract OutboxWithOpt is IOutbox, Cloneable {
 
     function initialize(address _rollup, IBridge _bridge) external {
         require(rollup == address(0), "ALREADY_INIT");
-        bytes32 testBytes = keccak256(abi.encode(block.timestamp));
+        bytes32 initialBytes = keccak256(abi.encode(block.timestamp));
         context = L2ToL1Context({
             sender: address(this),
-            l2Block: uint128(100),
-            l1Block: uint128(100),
-            timestamp: uint128(1643290342),
-            batchNum: uint128(10),
-            outputId: testBytes
+            l2Block: uint128(1),
+            l1Block: uint128(1),
+            timestamp: uint128(1),
+            batchNum: uint128(1),
+            outputId: initialBytes
         });
         rollup = _rollup;
         bridge = _bridge;
@@ -221,33 +213,18 @@ contract OutboxWithOpt is IOutbox, Cloneable {
         // Hash the leaf an extra time to prove it's a leaf
         bytes32 calcRoot = calculateMerkleRoot(proof, path, item);
         OutboxEntry storage outboxEntry = outboxEntries[batchNum];
-        //require(outboxEntry.root != bytes32(0), "NO_OUTBOX_ENTRY");
+        require(outboxEntry.root != bytes32(0), "NO_OUTBOX_ENTRY");
 
         // With a minimal path, the pair of path and proof length should always identify
         // a unique leaf. The path itself is not enough since the path length to different
         // leaves could potentially be different
         bytes32 uniqueKey = keccak256(abi.encodePacked(path, proof.length));
 
-        //require(!outboxEntry.spentOutput[uniqueKey], "ALREADY_SPENT");
-        //require(calcRoot == outboxEntry.root, "BAD_ROOT");
-        require(calcRoot != 0x0 , "BAD_ROOT");
+        require(!outboxEntry.spentOutput[uniqueKey], "ALREADY_SPENT");
+        require(calcRoot == outboxEntry.root, "BAD_ROOT");
+
         outboxEntry.spentOutput[uniqueKey] = true;
         return uniqueKey;
-    }
-
-    function executeCall(
-        address destAddr,
-        uint256 amount,
-        bytes memory data
-    ) public  returns (bool success, bytes memory returnData) {
-        //require(allowedOutboxesMap[msg.sender].allowed, "NOT_FROM_OUTBOX");
-        if (data.length > 0) require(destAddr.isContract(), "NO_CODE_AT_DEST");
-        address currentOutbox = activeOutbox;
-        activeOutbox = msg.sender;
-        // We set and reset active outbox around external call so activeOutbox remains valid during call
-        (success, returnData) = destAddr.call{ value: amount }(data);
-        activeOutbox = currentOutbox;
-        emit BridgeCallTriggered(msg.sender, destAddr, amount, data);
     }
 
     function executeBridgeCall(
@@ -255,7 +232,7 @@ contract OutboxWithOpt is IOutbox, Cloneable {
         uint256 amount,
         bytes memory data
     ) internal {
-        (bool success, bytes memory returndata) = executeCall(destAddr, amount, data);
+        (bool success, bytes memory returndata) = bridge.executeCall(destAddr, amount, data);
         if (!success) {
             if (returndata.length > 0) {
                 // solhint-disable-next-line no-inline-assembly
@@ -303,9 +280,5 @@ contract OutboxWithOpt is IOutbox, Cloneable {
 
     function outboxEntryExists(uint256 batchNum) public view override returns (bool) {
         return outboxEntries[batchNum].root != bytes32(0);
-    }
-
-    fallback() payable external{
-
     }
 }
