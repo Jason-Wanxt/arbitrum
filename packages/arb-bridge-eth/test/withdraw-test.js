@@ -38,7 +38,7 @@ async function setEntries(cases, outbox) {
 describe("Outbox", async function () {
     let outboxWithOpt;
     let outboxWithoutOpt;
-    let token;
+    
     let bridge;
     const cases = TestCase.cases;
     const sentEthAmount = ethers.utils.parseEther("10");
@@ -47,15 +47,11 @@ describe("Outbox", async function () {
         const accounts = await ethers.getSigners();
         const OutboxWithOpt = await ethers.getContractFactory("OutboxWithOptTester");
         const OutboxWithoutOpt = await ethers.getContractFactory("OutboxWithoutOptTester");
-        const Token = await ethers.getContractFactory("TestToken");
         const Bridge = await ethers.getContractFactory("Bridge");
-        token = await Token.deploy("Test token", "tst");
         outboxWithOpt = await OutboxWithOpt.deploy();
         outboxWithoutOpt = await OutboxWithoutOpt.deploy();
         bridge = await Bridge.deploy();
-        // await outboxWithOpt.deployed();
-        // await outboxWithoutOpt.deployed();
-        const balance = await token.balanceOf("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
+        
         
         await outboxWithOpt.initialize("0xC12BA48c781F6e392B49Db2E25Cd0c28cD77531A", bridge.address);
         await outboxWithoutOpt.initialize("0xC12BA48c781F6e392B49Db2E25Cd0c28cD77531A", bridge.address);
