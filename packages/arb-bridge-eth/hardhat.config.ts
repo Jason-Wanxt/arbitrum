@@ -2,6 +2,7 @@ import { config } from './hardhat.dev-config'
 import { task } from 'hardhat/config'
 import * as fs from 'fs'
 import 'arb-upgrades/ethBridgeTasks'
+require("hardhat-gas-reporter");
 
 task('create-chain', 'Creates a rollup chain')
   .addParam('sequencer', "The sequencer's address")
