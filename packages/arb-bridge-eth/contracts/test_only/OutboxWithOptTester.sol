@@ -18,14 +18,14 @@
 
 pragma solidity ^0.6.11;
 
-import "./interfaces/IOutbox.sol";
-import "./interfaces/IBridge.sol";
-import "./Copy_Address2.sol";
-// import "@openzeppelin/contracts/utils/Address.sol";
-import "./Messages.sol";
-import "./libraries/MerkleLib.sol";
-import "./libraries/BytesLib.sol";
-import "./libraries/Cloneable.sol";
+import "../bridge/interfaces/IOutbox.sol";
+import "../bridge/interfaces/IBridge.sol";
+//import "../bridge/Copy_Address2.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
+import "../bridge/Messages.sol";
+import "../bridge/libraries/MerkleLib.sol";
+import "../bridge/libraries/BytesLib.sol";
+import "../bridge/libraries/Cloneable.sol";
 
 // import "@openzeppelin/contracts/proxy/BeaconProxy.sol";
 // import "@openzeppelin/contracts/proxy/UpgradeableBeacon.sol";
