@@ -18,13 +18,11 @@
 
 pragma solidity ^0.6.11;
 
-// import "./Inbox.sol";
-// import "./Outbox.sol";
 
-import "./Copy_Address2.sol";
-
+import "@openzeppelin/contracts/utils/Address.sol";
 import "./interfaces/IBridge.sol";
 import "./Messages.sol";
+
 contract Bridge is  IBridge {
     using Address for address;
     struct InOutInfo {
